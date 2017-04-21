@@ -1,0 +1,377 @@
+#N canvas 234 111 973 478 10;
+#X declare -lib mrpeach;
+#X obj 12 26 import mrpeach;
+#X obj 10 234 cnv 15 100 60 empty empty alive? 20 12 0 14 -204786 -66577
+0;
+#X obj 15 264 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#N canvas 124 174 604 423 korg-nano 0;
+#X obj 46 160 ctlin;
+#X obj 46 256 spigot;
+#X obj 59 189 sel 14;
+#X msg 72 218 1;
+#X msg 110 223 0;
+#X obj 46 281 / 127;
+#X obj 146 160 ctlin;
+#X obj 146 256 spigot;
+#X msg 172 218 1;
+#X msg 210 223 0;
+#X obj 146 281 / 127;
+#X obj 159 189 sel 2;
+#X obj 246 160 ctlin;
+#X obj 246 256 spigot;
+#X msg 272 218 1;
+#X msg 310 223 0;
+#X obj 246 281 / 127;
+#X obj 259 189 sel 23;
+#X obj 346 160 ctlin;
+#X obj 346 256 spigot;
+#X msg 372 218 1;
+#X msg 410 223 0;
+#X obj 346 281 / 127;
+#X obj 359 189 sel 33;
+#X obj 46 326 outlet;
+#X obj 146 326 outlet;
+#X obj 246 326 outlet;
+#X obj 346 326 outlet;
+#X text 41 359 knob \, slider \, toggle \, trigger;
+#X obj 168 38 f \$1;
+#X obj 168 15 loadbang;
+#N canvas 27 244 450 300 lookup 0;
+#X obj 137 37 sel 1 2 3 4 5 6 7 8 9;
+#X obj 136 10 inlet;
+#X msg 277 78 14 2 23 33;
+#X msg 277 98 15 3 24 34;
+#X msg 278 117 16 4 25 35;
+#X msg 278 137 17 5 26 36;
+#X msg 278 157 18 6 27 37;
+#X msg 278 177 19 8 28 38;
+#X msg 278 197 20 9 29 39;
+#X msg 278 217 21 12 30 40;
+#X msg 278 236 22 13 31 41;
+#X obj 131 268 outlet;
+#X connect 0 0 2 0;
+#X connect 0 1 3 0;
+#X connect 0 2 4 0;
+#X connect 0 3 5 0;
+#X connect 0 4 6 0;
+#X connect 0 5 7 0;
+#X connect 0 6 8 0;
+#X connect 0 7 9 0;
+#X connect 0 8 10 0;
+#X connect 1 0 0 0;
+#X connect 2 0 11 0;
+#X connect 3 0 11 0;
+#X connect 4 0 11 0;
+#X connect 5 0 11 0;
+#X connect 6 0 11 0;
+#X connect 7 0 11 0;
+#X connect 8 0 11 0;
+#X connect 9 0 11 0;
+#X connect 10 0 11 0;
+#X restore 166 70 pd lookup;
+#X obj 152 108 unpack f f f f;
+#X connect 0 0 1 0;
+#X connect 0 1 2 0;
+#X connect 1 0 5 0;
+#X connect 2 0 3 0;
+#X connect 2 1 4 0;
+#X connect 3 0 1 1;
+#X connect 4 0 1 1;
+#X connect 5 0 24 0;
+#X connect 6 0 7 0;
+#X connect 6 1 11 0;
+#X connect 7 0 10 0;
+#X connect 8 0 7 1;
+#X connect 9 0 7 1;
+#X connect 10 0 25 0;
+#X connect 11 0 8 0;
+#X connect 11 1 9 0;
+#X connect 12 0 13 0;
+#X connect 12 1 17 0;
+#X connect 13 0 16 0;
+#X connect 14 0 13 1;
+#X connect 15 0 13 1;
+#X connect 16 0 26 0;
+#X connect 17 0 14 0;
+#X connect 17 1 15 0;
+#X connect 18 0 19 0;
+#X connect 18 1 23 0;
+#X connect 19 0 22 0;
+#X connect 20 0 19 1;
+#X connect 21 0 19 1;
+#X connect 22 0 27 0;
+#X connect 23 0 20 0;
+#X connect 23 1 21 0;
+#X connect 29 0 31 0;
+#X connect 30 0 29 0;
+#X connect 31 0 32 0;
+#X connect 32 0 2 1;
+#X connect 32 1 11 1;
+#X connect 32 2 17 1;
+#X connect 32 3 23 1;
+#X restore 12 187 pd korg-nano;
+#X text 137 11 I receive OSC messages on port 12345 and send them to
+port 54321;
+#N canvas 49 470 506 310 ack-alive 1;
+#X obj 16 76 print;
+#X obj 16 42 unpackOSC;
+#X obj 73 106 t f;
+#X floatatom 73 133 5 0 0 0 - - -;
+#X obj 147 106 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 147 156 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 147 178 0;
+#X obj 147 205 s ack;
+#X obj 73 214 s ack;
+#X msg 73 183 1;
+#X obj 73 79 routeOSC /node/ack;
+#X obj 147 128 delay 5500;
+#X obj 16 11 udpreceive \$1;
+#X obj 73 157 select \$2;
+#X connect 1 0 0 0;
+#X connect 1 0 10 0;
+#X connect 2 0 3 0;
+#X connect 3 0 13 0;
+#X connect 4 0 11 0;
+#X connect 5 0 6 0;
+#X connect 6 0 7 0;
+#X connect 9 0 8 0;
+#X connect 9 0 4 0;
+#X connect 10 0 2 0;
+#X connect 11 0 5 0;
+#X connect 12 0 1 0;
+#X connect 13 0 9 0;
+#X restore 13 135 pd ack-alive 12345 206;
+#X obj 13 58 loadbang;
+#X obj 582 9 cnv 15 210 170 empty empty test_solid_colors 20 12 0 14
+-262130 -66577 0;
+#X msg 596 123 send /node/solid \$2 \$3 \$4;
+#N canvas 437 359 439 323 rgb-control 0;
+#X floatatom 358 125 5 0 0 0 - - -;
+#X floatatom 312 145 5 0 0 0 - - -;
+#X floatatom 273 162 5 0 0 0 - - -;
+#X obj 108 104 hsl 80 15 0 255 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 108 125 hsl 80 15 0 255 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 108 145 hsl 80 15 0 255 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 299 284 outlet;
+#X obj 298 251 pack b f f f;
+#X msg 297 212 bang;
+#X text 195 143 RGB;
+#X connect 0 0 8 0;
+#X connect 0 0 7 1;
+#X connect 1 0 8 0;
+#X connect 1 0 7 2;
+#X connect 2 0 8 0;
+#X connect 2 0 7 3;
+#X connect 3 0 0 0;
+#X connect 4 0 1 0;
+#X connect 5 0 2 0;
+#X connect 7 0 6 0;
+#X connect 8 0 7 0;
+#X coords 0 -1 1 1 120 70 2 100 100;
+#X restore 596 39 pd rgb-control;
+#X obj 596 155 s msg;
+#X obj 585 188 cnv 15 280 170 empty empty test_gradients 20 12 0 14
+-203904 -66577 0;
+#N canvas 565 143 472 415 gradient-ctrl 0;
+#X floatatom 61 200 5 0 0 0 - - -;
+#X floatatom 100 220 5 0 0 0 - - -;
+#X floatatom 142 236 5 0 0 0 - - -;
+#X obj 109 114 hsl 80 15 0 255 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 109 135 hsl 80 15 0 255 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 109 155 hsl 80 15 0 255 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 131 353 outlet;
+#X msg 129 281 bang;
+#X obj 234 115 hsl 80 15 0 255 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 234 136 hsl 80 15 0 255 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 234 156 hsl 80 15 0 255 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X floatatom 216 219 5 0 0 0 - - -;
+#X floatatom 255 239 5 0 0 0 - - -;
+#X floatatom 297 255 5 0 0 0 - - -;
+#X obj 130 320 pack b f f f f f f;
+#X text 196 153 RGB0;
+#X text 321 154 RGB1;
+#X connect 0 0 7 0;
+#X connect 0 0 14 1;
+#X connect 1 0 7 0;
+#X connect 1 0 14 2;
+#X connect 2 0 7 0;
+#X connect 2 0 14 3;
+#X connect 3 0 0 0;
+#X connect 4 0 1 0;
+#X connect 5 0 2 0;
+#X connect 7 0 14 0;
+#X connect 8 0 11 0;
+#X connect 9 0 12 0;
+#X connect 10 0 13 0;
+#X connect 11 0 14 4;
+#X connect 11 0 7 0;
+#X connect 12 0 14 5;
+#X connect 12 0 7 0;
+#X connect 13 0 14 6;
+#X connect 13 0 7 0;
+#X connect 14 0 6 0;
+#X coords 0 -1 1 1 260 80 2 100 100;
+#X restore 597 215 pd gradient-ctrl;
+#X obj 597 331 s msg;
+#X msg 597 304 send /node/gradient \$2 \$3 \$4 \$5 \$6 \$7;
+#N canvas 406 191 596 485 junk-yard 0;
+#X obj 17 17 cnv 15 150 180 empty empty select_node(s) 20 12 0 14 -261234
+-66577 0;
+#X obj 22 47 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1;
+#X obj 40 47 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1;
+#X obj 58 47 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1;
+#X obj 94 47 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1;
+#X obj 112 47 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X obj 130 47 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X obj 148 47 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X obj 76 47 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1;
+#X obj 22 67 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1;
+#X obj 40 67 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1;
+#X obj 58 67 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1;
+#X obj 94 67 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1;
+#X obj 112 67 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X obj 130 67 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X obj 148 67 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X obj 76 67 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1;
+#X obj 22 88 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1;
+#X obj 40 88 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1;
+#X obj 58 88 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1;
+#X obj 94 88 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1;
+#X obj 112 88 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X obj 130 88 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X obj 148 88 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X obj 76 88 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1;
+#X obj 22 110 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X obj 40 110 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X obj 58 110 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X obj 94 110 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X obj 112 110 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X obj 130 110 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X obj 148 110 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X obj 76 110 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X obj 22 131 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X obj 40 131 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X obj 58 131 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X obj 94 131 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X obj 112 131 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X obj 130 131 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X obj 148 131 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X obj 76 131 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X obj 21 152 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X obj 39 152 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X obj 57 152 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X obj 93 152 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X obj 111 152 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X obj 129 152 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X obj 147 152 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X obj 75 152 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#N canvas 0 22 450 278 (subpatch) 0;
+#X array pixels 36 float 1;
+#A 0 0 0.4 0.4 0 0 0.5 0.1 0.9 0.8 0.3 0 0.5 0.6 0.2 0.3 0.6 0.2 0.1
+0.7 0.7 0.8 0 0.9 0.8 0.8 0.3 0.6 0.5 0.9 0.2 0.5 0.3 0.1 0.5 0.1 0.5
+;
+#X coords 0 1 35 -1 200 140 1;
+#X restore 352 205 graph;
+#N canvas 614 440 450 300 random-generator 0;
+#X obj 64 36 inlet;
+#X obj 151 89 f;
+#X obj 183 89 + 1;
+#X obj 151 120 mod 36;
+#X floatatom 151 148 5 0 0 0 - - -;
+#X obj 64 181 tabwrite pixels;
+#X obj 64 99 random 10;
+#X obj 64 136 * 0.1;
+#X obj 64 66 metro 80;
+#X connect 0 0 8 0;
+#X connect 1 0 2 0;
+#X connect 1 0 3 0;
+#X connect 2 0 1 1;
+#X connect 3 0 4 0;
+#X connect 4 0 5 1;
+#X connect 6 0 7 0;
+#X connect 7 0 5 0;
+#X connect 8 0 1 0;
+#X connect 8 0 6 0;
+#X restore 216 370 pd random-generator;
+#X obj 216 341 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X connect 51 0 50 0;
+#X restore 12 161 pd junk-yard;
+#X obj 373 9 cnv 15 200 170 empty empty basic_stuff 20 12 0 14 -261234
+-66577 0;
+#X obj 391 158 s msg;
+#X msg 391 91 send /node/testpattern;
+#X msg 410 117 send /node/off;
+#X obj 278 58 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 278 85 metro 500;
+#X msg 13 83 connect 192.168.8.206 54321;
+#N canvas 60 450 354 253 outgoing 0;
+#X obj 82 190 udpsend;
+#X obj 82 161 packOSC;
+#X obj 142 161 print;
+#X msg 54 93 disconnect;
+#X obj 82 131 r msg;
+#X obj 30 23 inlet;
+#X msg 30 61 connect \$1 54321;
+#X connect 1 0 0 0;
+#X connect 3 0 0 0;
+#X connect 4 0 1 0;
+#X connect 4 0 2 0;
+#X connect 5 0 6 0;
+#X connect 6 0 0 0;
+#X restore 13 109 pd outgoing;
+#X connect 6 0 22 0;
+#X connect 8 0 10 0;
+#X connect 9 0 8 0;
+#X connect 12 0 14 0;
+#X connect 14 0 13 0;
+#X connect 18 0 17 0;
+#X connect 19 0 17 0;
+#X connect 20 0 21 0;
+#X connect 22 0 23 0;
