@@ -1,9 +1,9 @@
-#N canvas 234 111 973 478 10;
+#N canvas 155 114 973 478 10;
 #X declare -lib mrpeach;
 #X obj 12 26 import mrpeach;
 #X obj 10 234 cnv 15 100 60 empty empty alive? 20 12 0 14 -204786 -66577
 0;
-#X obj 15 264 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1
+#X obj 15 264 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 1 1
 ;
 #N canvas 124 174 604 423 korg-nano 0;
 #X obj 46 160 ctlin;
@@ -111,9 +111,7 @@
 #X connect 32 2 17 1;
 #X connect 32 3 23 1;
 #X restore 12 187 pd korg-nano;
-#X text 137 11 I receive OSC messages on port 12345 and send them to
-port 54321;
-#N canvas 49 470 506 310 ack-alive 1;
+#N canvas 49 470 506 310 ack-alive 0;
 #X obj 16 76 print;
 #X obj 16 42 unpackOSC;
 #X obj 73 106 t f;
@@ -128,8 +126,8 @@ port 54321;
 #X msg 73 183 1;
 #X obj 73 79 routeOSC /node/ack;
 #X obj 147 128 delay 5500;
-#X obj 16 11 udpreceive \$1;
-#X obj 73 157 select \$2;
+#X obj 16 11 udpreceive 12345;
+#X obj 73 157 select 206;
 #X connect 1 0 0 0;
 #X connect 1 0 10 0;
 #X connect 2 0 3 0;
@@ -229,86 +227,86 @@ port 54321;
 #N canvas 406 191 596 485 junk-yard 0;
 #X obj 17 17 cnv 15 150 180 empty empty select_node(s) 20 12 0 14 -261234
 -66577 0;
-#X obj 22 47 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1;
-#X obj 40 47 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1;
-#X obj 58 47 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1;
-#X obj 94 47 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1;
-#X obj 112 47 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1
+#X obj 22 47 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 1 1;
+#X obj 40 47 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 1 1;
+#X obj 58 47 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 1 1;
+#X obj 94 47 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 1 1;
+#X obj 112 47 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 1 1
 ;
-#X obj 130 47 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1
+#X obj 130 47 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 1 1
 ;
-#X obj 148 47 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1
+#X obj 148 47 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 1 1
 ;
-#X obj 76 47 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1;
-#X obj 22 67 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1;
-#X obj 40 67 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1;
-#X obj 58 67 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1;
-#X obj 94 67 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1;
-#X obj 112 67 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1
+#X obj 76 47 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 1 1;
+#X obj 22 67 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 1 1;
+#X obj 40 67 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 1 1;
+#X obj 58 67 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 1 1;
+#X obj 94 67 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 1 1;
+#X obj 112 67 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 1 1
 ;
-#X obj 130 67 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1
+#X obj 130 67 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 1 1
 ;
-#X obj 148 67 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1
+#X obj 148 67 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 1 1
 ;
-#X obj 76 67 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1;
-#X obj 22 88 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1;
-#X obj 40 88 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1;
-#X obj 58 88 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1;
-#X obj 94 88 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1;
-#X obj 112 88 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1
+#X obj 76 67 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 1 1;
+#X obj 22 88 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 1 1;
+#X obj 40 88 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 1 1;
+#X obj 58 88 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 1 1;
+#X obj 94 88 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 1 1;
+#X obj 112 88 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 1 1
 ;
-#X obj 130 88 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1
+#X obj 130 88 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 1 1
 ;
-#X obj 148 88 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1
+#X obj 148 88 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 1 1
 ;
-#X obj 76 88 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1;
-#X obj 22 110 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1
+#X obj 76 88 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 1 1;
+#X obj 22 110 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 1 1
 ;
-#X obj 40 110 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1
+#X obj 40 110 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 1 1
 ;
-#X obj 58 110 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1
+#X obj 58 110 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 1 1
 ;
-#X obj 94 110 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1
+#X obj 94 110 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 1 1
 ;
-#X obj 112 110 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1
+#X obj 112 110 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 1 1
 ;
-#X obj 130 110 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1
+#X obj 130 110 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 1 1
 ;
-#X obj 148 110 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1
+#X obj 148 110 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 1 1
 ;
-#X obj 76 110 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1
+#X obj 76 110 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 1 1
 ;
-#X obj 22 131 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1
+#X obj 22 131 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 1 1
 ;
-#X obj 40 131 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1
+#X obj 40 131 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 1 1
 ;
-#X obj 58 131 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1
+#X obj 58 131 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 1 1
 ;
-#X obj 94 131 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1
+#X obj 94 131 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 1 1
 ;
-#X obj 112 131 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1
+#X obj 112 131 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 1 1
 ;
-#X obj 130 131 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1
+#X obj 130 131 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 1 1
 ;
-#X obj 148 131 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1
+#X obj 148 131 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 1 1
 ;
-#X obj 76 131 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1
+#X obj 76 131 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 1 1
 ;
-#X obj 21 152 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1
+#X obj 21 152 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 1 1
 ;
-#X obj 39 152 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1
+#X obj 39 152 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 1 1
 ;
-#X obj 57 152 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1
+#X obj 57 152 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 1 1
 ;
-#X obj 93 152 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1
+#X obj 93 152 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 1 1
 ;
-#X obj 111 152 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1
+#X obj 111 152 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 1 1
 ;
-#X obj 129 152 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1
+#X obj 129 152 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 1 1
 ;
-#X obj 147 152 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1
+#X obj 147 152 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 1 1
 ;
-#X obj 75 152 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 0 1
+#X obj 75 152 tgl 15 0 empty ack empty 17 7 0 10 -262144 -1 -1 1 1
 ;
 #N canvas 0 22 450 278 (subpatch) 0;
 #X array pixels 36 float 1;
@@ -366,12 +364,43 @@ port 54321;
 #X connect 5 0 6 0;
 #X connect 6 0 0 0;
 #X restore 13 109 pd outgoing;
-#X connect 6 0 22 0;
-#X connect 8 0 10 0;
-#X connect 9 0 8 0;
-#X connect 12 0 14 0;
-#X connect 14 0 13 0;
-#X connect 18 0 17 0;
-#X connect 19 0 17 0;
-#X connect 20 0 21 0;
-#X connect 22 0 23 0;
+#X obj 372 191 cnv 15 140 80 empty empty test_pixels 20 12 0 14 -261682
+-66577 0;
+#N canvas 447 397 633 377 pixels-test 0;
+#X obj 58 273 s msg;
+#X msg 53 78 send /node/pixels 255 255 255 0 0 0 255 255 255 0 0 0
+255 255 255 0 0 0 255 255 255 0 0 0 255 255 255 0 0 0 255 255 255 0
+0 0 255 255 255 0 0 0 255 255 255 0 0 0 255 255 255 0 0 0 255 255 255
+0 0 0 255 255 255 0 0 0 255 255 255 0 0 0 255 255 255 0 0 0 255 255
+255 0 0 0 255 255 255 0 0 0 255 255 255 0 0 0 255 255 255 0 0 0 255
+255 255 0 0 0;
+#X obj 47 33 metro 3000;
+#X obj 130 32 metro 2000;
+#X msg 127 176 send /node/pixels 0 0 0 255 255 255 0 0 0 255 255 255
+0 0 0 255 255 255 0 0 0 255 255 255 0 0 0 255 255 255 0 0 0 255 255
+255 0 0 0 255 255 255 0 0 0 255 255 255 0 0 0 255 255 255 0 0 0 255
+255 255 0 0 0 255 255 255 0 0 0 255 255 255 0 0 0 255 255 255 0 0 0
+255 255 255 0 0 0 255 255 255 0 0 0 255 255 255 0 0 0 255 255 255 0
+0 0 255 255 255;
+#X obj 47 7 inlet;
+#X connect 1 0 0 0;
+#X connect 2 0 1 0;
+#X connect 3 0 4 0;
+#X connect 4 0 0 0;
+#X connect 5 0 2 0;
+#X connect 5 0 3 0;
+#X restore 388 242 pd pixels-test;
+#X obj 388 219 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X text 133 12 I receive OSC messages on port 12345 and send them to
+port 54321;
+#X connect 5 0 21 0;
+#X connect 7 0 9 0;
+#X connect 8 0 7 0;
+#X connect 11 0 13 0;
+#X connect 13 0 12 0;
+#X connect 17 0 16 0;
+#X connect 18 0 16 0;
+#X connect 19 0 20 0;
+#X connect 21 0 22 0;
+#X connect 25 0 24 0;
